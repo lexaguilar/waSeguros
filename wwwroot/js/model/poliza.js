@@ -6,23 +6,35 @@ const poliza = {
     entity: 'poliza',
     validate: function(){
 
-        let isOk = true;
+        let isOk = [];
+        document.querySelector("#errors").innerHTML = '';
 
         this.columns.forEach(col => {
 
             if(col.required) {
 
                 const value = col.getValue();
-                isOk = validateValue(value);
+                const result = validateValue(value);
 
-                if(!isOk)
+                isOk.push(result);
+
+                if(!result){
                     col.addError();
+                    document.querySelector("#errors").innerHTML = 'Corriga los errores que estan marcados en rojo';
+                }
+                else{
+
+                    const selector = col.reference || col.id;
+                    const element = document.querySelector(`#${selector}`);
+                    element.classList.remove('error-input');
+
+                }
 
             }
 
         });
 
-        return isOk;
+        return isOk.every(x => x);
     },
     save : function(polizaCoberturas) {
 
@@ -32,20 +44,21 @@ const poliza = {
             data[col.id] = col.getValue(polizaCoberturas);
         });
 
-        data.polizaCoberturas = polizaCoberturas;
+        data.coberturasPolizas = polizaCoberturas;
 
         console.log(data);
 
-        // http('polizas/post').asPost(data).then(resp => {
-        //     console.log(resp);
-        // }).catch(err => alert(err));
+        http('polizas/post').asPost(data).then(resp => {
+            document.querySelector('#resp').innerHTML = `Se guardo la poliza con recido id ${resp.idrecibo}`;
+        }).catch(err => alert(err));
 
     },
     columns : [
         {
-            id: 'idContratante',
+            id: 'idContrantante',
             reference : 'idCliente',
-            required: true
+            required: true,
+            dataType : 'number'
         },{
             id: 'numeroPoliza',
             required: true
@@ -63,7 +76,7 @@ const poliza = {
             required: true
         },{
             id: 'totalSumaAsegurada',
-            getValue: polizaCoberturas => polizaCoberturas.filter(x => x.isuma == 'S').sum('montoSumaAsegurada')
+            getValue: polizaCoberturas => parseFloat(polizaCoberturas.filter(x => x.isuma == 'S').sum('montoSumaAsegurada'))
         },{
             id: 'totalPrima',
             getValue: polizaCoberturas => polizaCoberturas.sum('montoPrima')

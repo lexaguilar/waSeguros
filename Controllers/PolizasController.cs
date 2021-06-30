@@ -40,7 +40,9 @@ namespace waSeguros.Controllers
             _db.Polizas.Add(poliza);
             await _db.SaveChangesAsync();
 
-            return new JsonResult(poliza);            
+            return new JsonResult(new {
+                idrecibo = poliza.IdRecibo
+            });            
 
         }
     }

@@ -123,3 +123,11 @@ body {
 .btn-custom {
     padding: 5px 30px;
 }
+
+#errors {
+    color: #d64957;
+}
+
+#resp {
+    color: #2aaa63;
+}

@@ -59,9 +59,9 @@ const agregarCobertura = () => {
     polizaCoberturas.push({
 
         nombreCobertura : cobertura.nombreCobertura,
-        codCobertura : cobertura.codCobertura,
-        montoSumaAsegurada : _montoSumaAsegurada.value,
-        montoPrima : _montoPrima.value,
+        codCobertura : parseInt(cobertura.codCobertura),
+        montoSumaAsegurada : parseFloat(_montoSumaAsegurada.value),
+        montoPrima : parseFloat(_montoPrima.value),
         isuma : cobertura.isuma
 
     });

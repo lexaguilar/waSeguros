@@ -95,17 +95,25 @@ export const createModel = model => {
     const currentModel = {
         id: null,
         required : false,
+        dataType : 'string',
         getValue: function() {
 
             const selector = this.reference || this.id;        
-            return document.querySelector(`#${selector}`).value;
+            const value =  document.querySelector(`#${selector}`).value;
+
+            if(this.dataType == 'number')
+                return parseInt(value);
+            if(this.dataType == 'float')
+                return parseFloat(value);
+            return value;
+
 
         },
         addError: function()  {
 
             const selector = this.reference || this.id;
             const element = document.querySelector(`#${selector}`);
-            element.classList.add('error-input')
+            element.classList.add('error-input');
         }
     }
 
