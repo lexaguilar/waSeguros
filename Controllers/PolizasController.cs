@@ -31,6 +31,11 @@ namespace waSeguros.Controllers
             if(poliza.CoberturasPolizas.Count == 0)
                 return BadRequest("Debe ingresar al menos una cobertura");
 
+            var ExistePoliza = _db.Polizas.FirstOrDefault(x => x.NumeroPoliza == poliza.NumeroPoliza);
+
+            if(ExistePoliza != null)
+                return BadRequest($"Ya existe una poliza con el numero {poliza.NumeroPoliza}");
+
             poliza.init(_db);
             _db.Polizas.Add(poliza);
             await _db.SaveChangesAsync();
