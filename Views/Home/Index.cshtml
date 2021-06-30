@@ -2,7 +2,215 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="">
+
+    <div class="card">
+        <div class="card-header">
+            Busqueda
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row">
+                    <div class="col-3">
+                        <label for="TipoIdentificacion">Tipo Identificacion</label>
+                        <select class="form-control" id="TipoIdentificacion"
+                            asp-items="@ViewBag.TipoIdentificacions"></select>
+
+                    </div>
+                    <div class="col-3">
+                        <label for="Identificacion">Identificacion</label>
+                        <input type="text" value="3640701740000A" class="form-control" id="Identificacion" required
+                            placeholder="Identificacion">
+                    </div>
+                    <div class="col-3">
+                        <button id="btnBuscar" class="btn btn-primary">Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Datos del cliente
+        </div>
+        <div class="card-body">
+
+            <div class="row">
+                <div class="col-6">
+                    <label for="idCliente">Codigo Cliente</label>
+                    <input type="text" id="idCliente" class="form-control cliente-info" placeholder="Codigo Cliente">
+                </div>
+                <div class="col-6">
+                    <label for="fechaNacimiento">Fecha Nacimiento</label>
+                    <input type="date" class="form-control cliente-info" id="fechaNacimiento"
+                        placeholder="Fecha Nacimiento">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label for="codTipoIdentificacion">Tipo Identificacion</label>
+                    <select id="codTipoIdentificacion" class="form-control cliente-info"
+                        asp-items="@ViewBag.TipoIdentificacions"></select>
+
+                </div>
+                <div class="col-6">
+                    <label for="identificacion">Identificacion</label>
+                    <input type="text" class="form-control cliente-info" id="identificacion"
+                        placeholder="Identificacion">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label for="nombreCliente">Nombre y Apellido</label>
+                    <input type="text" class="form-control cliente-info" id="nombreCliente"
+                        placeholder="Nombre y Apellido">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label for="direccion">Direccion</label>
+                    <textarea class="form-control cliente-info" id="direccion" placeholder="Direccion"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label for="codPais">Pais</label>
+                    <select id="codPais" class="form-control cliente-info" asp-items="@ViewBag.Paises"></select>
+                </div>
+                <div class="col-4">
+                    <label for="codDepartamento">Departamento</label>
+                    <select id="codDepartamento" class="form-control cliente-info"></select>                    
+                </div>
+                <div class="col-4">
+                    <label for="codMunicipio">Municipio</label>
+                    <select id="codMunicipio" class="form-control cliente-info"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label for="telefono">Telefono</label>
+                    <input type="text" class="form-control cliente-info" id="telefono" placeholder="Telefono">
+                </div>
+                <div class="col-6">
+                    <label for="celular">Celular</label>
+                    <input type="text" class="form-control cliente-info" id="celular" placeholder="Celular">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Datos de la poliza
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="codRamo">Ramo</label>
+                            <select id="codRamo" class="form-control" asp-items="@ViewBag.Ramos"></select>
+                        </div>
+                        <div class="col-12">
+                            <label for="codMoneda">Moneda</label>
+                            <select id="codMoneda" class="form-control" asp-items="@ViewBag.Monedas"></select>
+                        </div>
+                        <div class="col-12">
+                            <label for="numeroPoliza">Numero Póliza</label>
+                            <input type="text" class="form-control" id="numeroPoliza" placeholder="Numero Póliza">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="vigenciaDesde">Vigencia Desde</label>
+                            <input type="date" class="form-control" id="vigenciaDesde" placeholder="dd-mm-aaaa">
+                        </div>
+                        <div class="col-12">
+                            <label for="vigenciaHasta">Vigencia Hasta</label>
+                            <input type="date" class="form-control" id="vigenciaHasta" placeholder="dd-mm-aaaa">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Coberturas de la poliza
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="codCobertura">Nombre de la cobertura</label>
+                            <select id="codCobertura" class="form-control"></select>
+                        </div>
+                        <div class="col-6">
+                            <label for="montoSumaAsegurada">Suma Asegurada</label>
+                            <input type="text" class="form-control" id="montoSumaAsegurada" placeholder="0.00">
+                        </div>
+                        <div class="col-6">
+                            <label for="montoPrima">Prima</label>
+                            <input type="text" class="form-control" id="montoPrima" placeholder="0.00">
+                        </div>
+                    </div>
+                </div>
+                <div class="col justify-content-end">
+                    <button type="button" id="brnAgregar" class="btn btn-primary">Agregar</button>
+                </div>
+                <div class="col-12">
+                    <table class="table">
+                        <thead>
+                            <th>Codigo</th>
+                            <th>Nombre Cobertura</th>
+                            <th>Suma?</th>
+                            <th>Suma Asegurada</th>
+                            <th>Prima</th>
+                            <th></th>
+                        </thead>
+                        <tbody id="body-coberturas">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="resumen">
+                    <table class="resumen-table">
+                        <tbody>
+                            <tr>
+                                <td>Gran Total Prima</td>
+                                <td id="totalPrima" class="resumen-money">0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Derecho Emision (2% Total Prima)</td>
+                                <td id="montoDerechoEmision" class="resumen-money">0.00</td>
+                            </tr>
+                            <tr>
+                                <td>impuesto 15%(Prima + DE)</td>
+                                <td id="montoImpuesto" class="resumen-money">0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Monto total</td>
+                                <td id="montoTotal" class="resumen-money total">0.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-12">
+                    <button type="button" class="btn btn-success" id="btnGuardar">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+@section Scripts{
+<script src="~/js/site.js" asp-append-version="true" type="module"></script>
+<script src="~/js/moment.js" asp-append-version="true"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+}
