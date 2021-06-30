@@ -1,0 +1,17 @@
+<form>
+    <div class="row">
+        <div class="col-3">
+            <label for="TipoIdentificacion">Tipo Identificacion</label>
+            <select class="form-control" id="TipoIdentificacion" asp-items="@ViewBag.TipoIdentificacions"></select>
+
+        </div>
+        <div class="col-3">
+            <label for="Identificacion">Identificacion</label>
+            <input type="text" value="3640701740000A" class="form-control" id="Identificacion" required
+                placeholder="Identificacion">
+        </div>
+        <div class="col-3">
+            <button id="btnBuscar" class="btn btn-primary">Buscar</button>
+        </div>
+    </div>
+</form>

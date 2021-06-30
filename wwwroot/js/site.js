@@ -1,5 +1,5 @@
 ﻿import http from "../js/http.js";
-import { cargarDepartamentosAsync, cargarMunicipiosAsync, clearHTML, dataToHTMLForm, fillSelect, formatoMoneda } from "../js/utils.js";
+import { cargarDepartamentosAsync, cargarMunicipiosAsync, clearHTML, dataToHTMLForm, fillSelect, formatoMoneda, validateHTMlValue, validateValue } from "../js/utils.js";
 import { pderechoEmision, pImpuesto } from "./model/const.js";
 import { polizaModel } from "./model/poliza.js";
 
@@ -44,6 +44,16 @@ const agregarCobertura = () => {
     var _montoSumaAsegurada = document.querySelector("#montoSumaAsegurada");
     var _montoPrima = document.querySelector("#montoPrima");
 
+    const result = [
+        validateHTMlValue(_codCobertura),
+        validateHTMlValue(_montoSumaAsegurada),
+        validateHTMlValue(_montoPrima)
+    ];
+
+    if(result.some(x => x == false))
+        return;
+
+
     var cobertura = coberturas.find(x => x.codCobertura == _codCobertura.value);
 
     polizaCoberturas.push({
@@ -59,7 +69,8 @@ const agregarCobertura = () => {
     pintarCoberturas(polizaCoberturas);
 
     document.querySelector('#montoSumaAsegurada').value = '';
-    document.querySelector('#montoPrima').value = '';
+    document.querySelector('#montoPrima').value = '';  
+
 
 }
 
@@ -123,7 +134,8 @@ const pintarCoberturas = (arr = []) =>{
 
 const guardarPoliza = () => {
 
-    polizaModel.save(polizaCoberturas); 
+    if(polizaModel.validate())
+        polizaModel.save(polizaCoberturas); 
 
 }
 

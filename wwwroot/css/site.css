@@ -101,3 +101,25 @@ body {
 #numeroPoliza {
     text-transform: uppercase;
 }
+
+.error-input {
+    border: 2px solid #ffb6bd;
+}
+
+.btn-controls {
+    width: 100%;
+    display: flex;
+    padding: 15px;
+}
+
+.btn-controls-end {
+    justify-content: flex-end;
+}
+
+.btn-controls-start {
+    justify-content: flex-start;
+}
+
+.btn-custom {
+    padding: 5px 30px;
+}

@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-6">
+        <label for="idCliente">Codigo Cliente</label>
+        <input readonly type="text" id="idCliente" class="form-control cliente-info" placeholder="Codigo Cliente">
+    </div>
+    <div class="col-6">
+        <label for="fechaNacimiento">Fecha Nacimiento</label>
+        <input type="date" class="form-control cliente-info" id="fechaNacimiento" placeholder="Fecha Nacimiento">
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <label for="codTipoIdentificacion">Tipo Identificacion</label>
+        <select id="codTipoIdentificacion" class="form-control cliente-info"
+            asp-items="@ViewBag.TipoIdentificacions"></select>
+
+    </div>
+    <div class="col-6">
+        <label for="identificacion">Identificacion</label>
+        <input type="text" class="form-control cliente-info" id="identificacion" placeholder="Identificacion">
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <label for="nombreCliente">Nombre y Apellido</label>
+        <input type="text" class="form-control cliente-info" id="nombreCliente" placeholder="Nombre y Apellido">
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <label for="direccion">Direccion</label>
+        <textarea class="form-control cliente-info" id="direccion" placeholder="Direccion"></textarea>
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <label for="codPais">Pais</label>
+        <select id="codPais" class="form-control cliente-info" asp-items="@ViewBag.Paises"></select>
+    </div>
+    <div class="col-4">
+        <label for="codDepartamento">Departamento</label>
+        <select id="codDepartamento" class="form-control cliente-info"></select>
+    </div>
+    <div class="col-4">
+        <label for="codMunicipio">Municipio</label>
+        <select id="codMunicipio" class="form-control cliente-info"></select>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <label for="telefono">Telefono</label>
+        <input type="text" class="form-control cliente-info" id="telefono" placeholder="Telefono">
+    </div>
+    <div class="col-6">
+        <label for="celular">Celular</label>
+        <input type="text" class="form-control cliente-info" id="celular" placeholder="Celular">
+    </div>
+</div>

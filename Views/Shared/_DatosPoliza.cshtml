@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-8">
+        <div class="row">
+            <div class="col-12">
+                <label for="codRamo">Ramo</label>
+                <select id="codRamo" class="form-control" asp-items="@ViewBag.Ramos"></select>
+            </div>
+            <div class="col-12">
+                <label for="codMoneda">Moneda</label>
+                <select id="codMoneda" class="form-control" asp-items="@ViewBag.Monedas"></select>
+            </div>
+            <div class="col-12">
+                <label for="numeroPoliza">Numero Póliza</label>
+                <input type="text" class="form-control" id="numeroPoliza" placeholder="Numero Póliza">
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="row">
+            <div class="col-12">
+                <label for="vigenciaDesde">Vigencia Desde</label>
+                <input type="date" class="form-control" id="vigenciaDesde" placeholder="dd-mm-aaaa">
+            </div>
+            <div class="col-12">
+                <label for="vigenciaHasta">Vigencia Hasta</label>
+                <input type="date" class="form-control" id="vigenciaHasta" placeholder="dd-mm-aaaa">
+            </div>
+        </div>
+    </div>
+</div>

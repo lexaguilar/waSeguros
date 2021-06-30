@@ -75,16 +75,38 @@ export const fillSelect = element => (array, defaultValue =  null) => {
 
 export const sum = (...arr) => arr.sum();
 
+export const validateValue = value => trim(value) != '' && value != null && value != undefined;
+
+export const validateHTMlValue = element => {
+
+    element.classList.remove('error-input');
+
+    const result = validateValue(element.value);
+    if(!result)
+        element.classList.add('error-input');
+
+    return result;
+}
+
+const trim = value => String(value).trim();
+
 export const createModel = model => {
 
     const currentModel = {
         id: null,
+        required : false,
         getValue: function() {
 
             const selector = this.reference || this.id;        
             return document.querySelector(`#${selector}`).value;
 
-        } 
+        },
+        addError: function()  {
+
+            const selector = this.reference || this.id;
+            const element = document.querySelector(`#${selector}`);
+            element.classList.add('error-input')
+        }
     }
 
     var newcols = model.columns.map(col => ({ ...currentModel, ...col}));

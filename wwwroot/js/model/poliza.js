@@ -1,12 +1,32 @@
 import http from "../http.js";
-import { createModel, sum } from "../utils.js";
+import { createModel, sum, validateValue } from "../utils.js";
 import { pderechoEmision, pImpuesto } from "./const.js";
 
 const poliza = {
     entity: 'poliza',
+    validate: function(){
+
+        let isOk = true;
+
+        this.columns.forEach(col => {
+
+            if(col.required) {
+
+                const value = col.getValue();
+                isOk = validateValue(value);
+
+                if(!isOk)
+                    col.addError();
+
+            }
+
+        });
+
+        return isOk;
+    },
     save : function(polizaCoberturas) {
 
-        let data = {};
+        let data = {};        
 
         this.columns.forEach(col => {
             data[col.id] = col.getValue(polizaCoberturas);
@@ -14,25 +34,33 @@ const poliza = {
 
         data.polizaCoberturas = polizaCoberturas;
 
-        http('polizas/post').asPost(data).then(resp => {
-            console.log(resp);
-        }).catch(err => alert(err))
+        console.log(data);
+
+        // http('polizas/post').asPost(data).then(resp => {
+        //     console.log(resp);
+        // }).catch(err => alert(err));
 
     },
     columns : [
         {
             id: 'idContratante',
-            reference : 'idCliente'
+            reference : 'idCliente',
+            required: true
         },{
             id: 'numeroPoliza',
+            required: true
         },{
             id: 'vigenciaDesde',
+            required: true
         },{
             id: 'vigenciaHasta',
+            required: true
         },{
             id: 'codRamo',
+            required: true
         },{
             id: 'codMoneda',
+            required: true
         },{
             id: 'totalSumaAsegurada',
             getValue: polizaCoberturas => polizaCoberturas.filter(x => x.isuma == 'S').sum('montoSumaAsegurada')

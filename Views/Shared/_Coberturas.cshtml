@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12">
+                <label for="codCobertura">Nombre de la cobertura</label>
+                <select id="codCobertura" class="form-control"></select>
+            </div>
+            <div class="col-6">
+                <label for="montoSumaAsegurada">Suma Asegurada</label>
+                <input type="text" class="form-control" id="montoSumaAsegurada" placeholder="0.00">
+            </div>
+            <div class="col-6">
+                <label for="montoPrima">Prima</label>
+                <input type="text" class="form-control" id="montoPrima" placeholder="0.00">
+            </div>
+        </div>
+    </div>
+    <div class="btn-controls btn-controls-end">        
+        <button type="button" id="brnAgregar" class="btn btn-primary btn-custom">   
+            <span class="fa fa-plus"></span>           
+            Agregar
+        </button>
+    </div>
+    <div class="col-12">
+        <table class="table">
+            <thead>
+                <th>Codigo</th>
+                <th>Nombre Cobertura</th>
+                <th>Suma?</th>
+                <th>Suma Asegurada</th>
+                <th>Prima</th>
+                <th></th>
+            </thead>
+            <tbody id="body-coberturas">
+
+            </tbody>
+        </table>
+    </div>
+    <div class="resumen">
+        <table class="resumen-table">
+            <tbody>
+                <tr>
+                    <td>Gran Total Prima</td>
+                    <td id="totalPrima" class="resumen-money">0.00</td>
+                </tr>
+                <tr>
+                    <td>Derecho Emision (2% Total Prima)</td>
+                    <td id="montoDerechoEmision" class="resumen-money">0.00</td>
+                </tr>
+                <tr>
+                    <td>impuesto 15%(Prima + DE)</td>
+                    <td id="montoImpuesto" class="resumen-money">0.00</td>
+                </tr>
+                <tr>
+                    <td>Monto total</td>
+                    <td id="montoTotal" class="resumen-money total">0.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="btn-controls btn-controls-start">
+        <button type="button" class="btn btn-success btn-custom" id="btnGuardar">
+            <span class="fa fa-save"></span> 
+            Guardar
+        </button>
+    </div>
+</div>

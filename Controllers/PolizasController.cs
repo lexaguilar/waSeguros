@@ -28,6 +28,9 @@ namespace waSeguros.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> Post([FromBody] Poliza poliza){
 
+            if(poliza.CoberturasPolizas.Count == 0)
+                return BadRequest("Debe ingresar al menos una cobertura");
+
             poliza.init(_db);
             _db.Polizas.Add(poliza);
             await _db.SaveChangesAsync();
